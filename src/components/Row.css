@@ -1,0 +1,27 @@
+.map--row {
+    display: flex;
+}
+
+.map--row--cell {
+    position: relative;
+    height: 80px;
+    width: 80px;
+}
+
+.map--row--cell img {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.map--row--cell--id-label {
+    position: relative;
+}
+
+.map--row--cell--id-label span {
+    background: white;
+    margin: 2px;
+}
