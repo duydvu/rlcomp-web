@@ -5,7 +5,10 @@ function GameInfo(props) {
     const {
         player,
         status,
-     } = props;
+        action,
+    } = props;
+
+    const actionArray = ['left', 'right', 'up', 'down', 'rest', 'mine'];
 
     if (player) {
         return (
@@ -13,6 +16,7 @@ function GameInfo(props) {
                 <div>Energy: {player['energy']}</div>
                 <div>Score: {player['score']}</div>
                 <div>Status: {status}</div>
+                <div>Last action: {actionArray[action]}</div>
             </div>
         );
     }

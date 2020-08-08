@@ -6,7 +6,7 @@ import PlayerCell from './components/PlayerCell';
 import GameInfo from './components/GameInfo';
 
 
-const REMOTE_URL = 'http://192.168.11.11:5201';
+const REMOTE_URL = 'http://118.69.144.206:5201';
 
 class App extends React.Component {
     constructor(props) {
@@ -14,7 +14,8 @@ class App extends React.Component {
         this.state = {
             map: [],
             players: [],
-            status: '',
+            status: null,
+            action: null,
         }
 
         this.next = this.next.bind(this);
@@ -34,6 +35,7 @@ class App extends React.Component {
                     map: data.state.map,
                     players: data.state.players,
                     status: data.status,
+                    action: data.action,
                 });
             }
             else {
@@ -53,6 +55,7 @@ class App extends React.Component {
                     map: data.state.map,
                     players: data.state.players,
                     status: data.status,
+                    action: null,
                 });
             }
         });
@@ -63,11 +66,12 @@ class App extends React.Component {
             map: mapView,
             players,
             status,
+            action,
         } = this.state;
         const mainPlayer = players.filter(pl => pl['id'] === 1)[0];
         return (
             <div>
-                <div>
+                <div className='controller'>
                     <input type='button' value='Next' onClick={this.next}/>
                     <input type='button' value='Reset' onClick={this.reset}/>
                 </div>
@@ -102,7 +106,7 @@ class App extends React.Component {
                         }
                     </div>
                 </div>
-                <GameInfo player={mainPlayer} status={status} />
+                <GameInfo player={mainPlayer} status={status} action={action} />
             </div>
         );
     }

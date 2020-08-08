@@ -16,7 +16,12 @@ function MapCell(props) {
                         swamp;
     return (
         <div className='map--row--cell'>
-            <img src={cellImg} />
+            <div>
+                <img src={cellImg} />
+                <div className='map--row--cell--gold'>
+                    {cellId > 0 ? cellId : null}
+                </div>
+            </div>
         </div>
     );
 }

@@ -25,3 +25,9 @@
     background: white;
     margin: 2px;
 }
+
+.map--row--cell--gold {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
