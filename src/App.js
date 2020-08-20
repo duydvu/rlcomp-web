@@ -16,6 +16,9 @@ class App extends React.Component {
             players: [],
             status: null,
             action: null,
+            mapId: '1',
+            initX: '0',
+            initY: '0',
         }
 
         this.next = this.next.bind(this);
@@ -47,7 +50,17 @@ class App extends React.Component {
     }
 
     reset() {
-        fetch(`${REMOTE_URL}/reset`, {method: 'POST'}).then(res => {
+        fetch(`${REMOTE_URL}/reset`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                map_id: this.state.mapId,
+                init_x: this.state.initX,
+                init_y: this.state.initY,
+            })
+        }).then(res => {
             return res.json();
         }).then(data => {
             if (data.state) {
@@ -61,12 +74,21 @@ class App extends React.Component {
         });
     }
 
+    handleChange(event, name) {
+        this.setState({
+            [name]: event.target.value
+        })
+    }
+
     render() {
         const {
             map: mapView,
             players,
             status,
             action,
+            mapId,
+            initX,
+            initY,
         } = this.state;
         const mainPlayer = players.filter(pl => pl['id'] === 1)[0];
         return (
@@ -106,7 +128,17 @@ class App extends React.Component {
                         }
                     </div>
                 </div>
-                <GameInfo player={mainPlayer} status={status} action={action} />
+                <GameInfo
+                    player={mainPlayer}
+                    status={status}
+                    action={action}
+                    mapId={mapId}
+                    initX={initX}
+                    initY={initY}
+                    handleMapIdChange={(e) => this.handleChange(e, 'mapId')}
+                    handleInitXChange={(e) => this.handleChange(e, 'initX')}
+                    handleInitYChange={(e) => this.handleChange(e, 'initY')}
+                />
             </div>
         );
     }

@@ -6,6 +6,12 @@ function GameInfo(props) {
         player,
         status,
         action,
+        mapId,
+        initX,
+        initY,
+        handleMapIdChange,
+        handleInitXChange,
+        handleInitYChange,
     } = props;
 
     const actionArray = ['left', 'right', 'up', 'down', 'rest', 'mine'];
@@ -17,6 +23,26 @@ function GameInfo(props) {
                 <div>Score: {player['score']}</div>
                 <div>Status: {status}</div>
                 <div>Last action: {actionArray[action]}</div>
+                <div>
+                    <div>
+                        <label>
+                            Map ID:
+                            <input type="text" value={mapId} onChange={handleMapIdChange} />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Init X:
+                            <input type="text" value={initX} onChange={handleInitXChange} />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Init Y:
+                            <input type="text" value={initY} onChange={handleInitYChange} />
+                        </label>
+                    </div>
+                </div>
             </div>
         );
     }
