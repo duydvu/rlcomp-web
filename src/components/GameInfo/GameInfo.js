@@ -9,6 +9,7 @@ function GameInfo(props) {
         mapId,
         initX,
         initY,
+        step,
         handleMapIdChange,
         handleInitXChange,
         handleInitYChange,
@@ -23,6 +24,7 @@ function GameInfo(props) {
                 <div>Score: {player['score']}</div>
                 <div>Status: {status}</div>
                 <div>Last action: {actionArray[action]}</div>
+                <div>Step: {step}</div>
                 <div>
                     <div>
                         <label>

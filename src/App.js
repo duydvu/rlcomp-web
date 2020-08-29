@@ -19,6 +19,7 @@ class App extends React.Component {
             mapId: '1',
             initX: '0',
             initY: '0',
+            step: 0,
         }
 
         this.next = this.next.bind(this);
@@ -39,6 +40,7 @@ class App extends React.Component {
                     players: data.state.players,
                     status: data.status,
                     action: data.action,
+                    step: data.step,
                 });
             }
             else {
@@ -69,6 +71,7 @@ class App extends React.Component {
                     players: data.state.players,
                     status: data.status,
                     action: null,
+                    step: 0,
                 });
             }
         });
@@ -89,6 +92,7 @@ class App extends React.Component {
             mapId,
             initX,
             initY,
+            step,
         } = this.state;
         const mainPlayer = players.filter(pl => pl['id'] === 1)[0];
         return (
@@ -135,6 +139,7 @@ class App extends React.Component {
                     mapId={mapId}
                     initX={initX}
                     initY={initY}
+                    step={step}
                     handleMapIdChange={(e) => this.handleChange(e, 'mapId')}
                     handleInitXChange={(e) => this.handleChange(e, 'initX')}
                     handleInitYChange={(e) => this.handleChange(e, 'initY')}
